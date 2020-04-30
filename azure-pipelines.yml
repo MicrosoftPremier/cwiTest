@@ -16,6 +16,8 @@ pool:
 
 variables:
   System.Debug: true
+  HTTP_PROXY: 'http://localhost:8888'
+  HTTPS_PROXY: 'http://localhost:8888'
 
 steps:
   - checkout: self
