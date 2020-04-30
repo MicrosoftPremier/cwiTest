@@ -1,0 +1,35 @@
+trigger:
+  branches:
+    include:
+    - 'master'
+  tags:
+    include:
+    - '*'
+
+pool:
+  vmImage: 'ubuntu-16.04'
+
+variables:
+  System.Debug: true
+
+steps:
+  - checkout: self
+    persistCredentials: true
+
+  - pwsh: if ((Get-Content ./file.txt) -contains "fail") { Write-Host "##vso[task.complete result=Failed;]Fail build" } else { Write-Host "Build will succeed" }
+    displayName: Fail build if needed
+    workingDirectory: $(build.sourcesDirectory)
+
+  - task: CreateWorkItem@1
+    displayName: 'Create a new work item if build fails'
+    condition: failed()
+    inputs:
+      workItemType: 'Task'
+      title: 'Platform Build Failure New Stack'
+      fieldMappings: |
+        Description=This item was automatically created by Azure Pipeline. Failed build is linked to this task.
+      associate: true
+      linkWorkItems: true
+      linkType: 'System.LinkTypes.Hierarchy-Reverse'
+      linkTarget: 'id'
+      targetId: '1735'
