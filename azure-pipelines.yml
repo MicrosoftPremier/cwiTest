@@ -6,6 +6,11 @@ trigger:
     include:
     - '*'
 
+pr:
+  branches:
+    include:
+    - 'master'
+
 pool:
   vmImage: 'ubuntu-16.04'
 
