@@ -18,6 +18,7 @@ variables:
   System.Debug: true
   HTTP_PROXY: 'http://localhost:8888'
   HTTPS_PROXY: 'http://localhost:8888'
+  NODE_TLS_REJECT_UNAUTHORIZED: '0'
 
 steps:
   - checkout: self
