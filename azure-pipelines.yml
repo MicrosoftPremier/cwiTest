@@ -41,4 +41,4 @@ steps:
       linkType: 'System.LinkTypes.Hierarchy-Reverse'
       linkTarget: 'id'
       targetId: '1735'
-      #authToken: '$(AuthToken)'
+      authToken: '$(AuthToken)'
