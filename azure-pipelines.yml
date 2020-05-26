@@ -12,10 +12,13 @@ pr:
     - 'master'
 
 pool:
-  vmImage: 'ubuntu-16.04'
+  name: 'ReneSchu'
 
 variables:
   System.Debug: true
+  HTTP_PROXY: 'http://localhost:8888'
+  HTTPS_PROXY: 'http://localhost:8888'
+  NODE_TLS_REJECT_UNAUTHORIZED: '0'
 
 steps:
   - checkout: self
@@ -38,4 +41,4 @@ steps:
       linkType: 'System.LinkTypes.Hierarchy-Reverse'
       linkTarget: 'id'
       targetId: '1735'
-      authToken: $(AuthToken)
+      authToken: '$(AuthToken)'
